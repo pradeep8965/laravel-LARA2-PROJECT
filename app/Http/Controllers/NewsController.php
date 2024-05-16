@@ -16,7 +16,7 @@ class NewsController extends Controller
         //1. Query Builder 
 
         //2. Eloquent ORM {object relational maper}
-        $news = News::all();
+        $news = News::orderBy('created_at', 'desc')->get();
         return view('news.index',compact('news'));
     }
 
@@ -25,7 +25,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view ('news.create');
     }
 
     /**
@@ -33,7 +33,10 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+
+        News::create($request->all());
+        return redirect()->route('news.index');
     }
 
     /**

@@ -33,6 +33,13 @@ class NewsSeeder extends Seeder
                                             'created_at'=>$current,
                                             'updated_at'=>$current
                                         ],
+                                        [
+                                            'title'=>'Narendra Modi',
+                                            'description'=>'description3',
+                                            'image_url'=>'',
+                                            'created_at'=>$current,
+                                            'updated_at'=>$current
+                                        ],
                                   ]);
 
 
