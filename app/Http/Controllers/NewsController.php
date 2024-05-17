@@ -34,7 +34,7 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-
+        // i want to insert records in database
         News::create($request->all());
         return redirect()->route('news.index');
     }
@@ -52,7 +52,10 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        //
+        //READ Operation
+        // using eloquent ORM
+        $news = News::find($news->id);
+        return view('news.edit',compact('news'));
     }
 
     /**
@@ -60,7 +63,10 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+         //dd($news->id);
+        //I want to update the record using Eloquent ORM
+        News::where('id', $news->id)->update($request->only(['title', 'description', 'image_url']));
+        return redirect()->route('news.index')->with('success', 'News updated successfully.');
     }
 
     /**
